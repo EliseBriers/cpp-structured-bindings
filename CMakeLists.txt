@@ -11,7 +11,7 @@ cmake_minimum_required(VERSION 3.5)
 project(${root_folder})
 
 # Create a sources variable with a link to all cpp files to compile
-set(SOURCES src/Tests.cpp)
+set(SOURCES src/Tests.cpp src/Float2.cpp)
 
 # Add an executable
 add_executable(${PROJECT_NAME} ${SOURCES})
@@ -24,6 +24,8 @@ target_link_libraries(${PROJECT_NAME} catch2)
 # target when running g++ these will be included as -I/directory/path/
 # target_include_directories(${PROJECT_NAME} PRIVATE
 # ${PROJECT_SOURCE_DIR}/catch2)
+target_include_directories(${PROJECT_NAME}
+                           PRIVATE ${PROJECT_SOURCE_DIR}/include)
 
 # Set C++ standard
 set_target_properties(${PROJECT_NAME} PROPERTIES CXX_STANDARD 20)
