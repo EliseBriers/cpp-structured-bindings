@@ -1,4 +1,7 @@
-#include "catch_amalgamated.hpp"
+#include "Float2.h"
+#include <catch_amalgamated.hpp>
+
+namespace test_structured_bindings {
 
 TEST_CASE("Structured binding on array", "[array]")
 {
@@ -11,4 +14,21 @@ TEST_CASE("Structured binding on array", "[array]")
     coordinates[1] = 60;
 
     REQUIRE(coordY == 60);
+}
+
+}
+
+namespace test_vector {
+using namespace vector;
+
+TEST_CASE("Magnitude returns the magnitude of a Float2", "[magnitude]")
+{
+    using namespace vector_math_part1;
+
+    const Float2 float2 { 3.F, -4.F };
+    const float expectedMagnitude = 5.F;
+
+    REQUIRE(Magnitude(float2) == Catch::Approx(expectedMagnitude));
+}
+
 }
