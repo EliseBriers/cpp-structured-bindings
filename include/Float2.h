@@ -10,6 +10,7 @@ struct Float2 {
 
 namespace vector_math_universal {
     float Magnitude(const Float2& float2);
+    float SqrMagnitude(const Float2& float2);
 }
 
 namespace vector_math_part1 {
@@ -28,6 +29,18 @@ namespace vector_math_part2 {
 
     NormalizedResult Normalized(Float2 float2);
 } // namespace vector_math_part2
+
+namespace vector_math_part3 {
+    using namespace vector_math_universal;
+
+    struct NormalizedResult {
+        Float2 normal;
+        float magnitude;
+        float sqrMagnitude;
+    };
+
+    NormalizedResult Normalized(Float2 float2);
+} // namespace vector_math_part3
 } // namespace vector
 
 #endif // !FLOAT2_H

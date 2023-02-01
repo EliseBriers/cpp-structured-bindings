@@ -167,6 +167,48 @@ namespace test_vector_math_part2 {
     }
 }
 
+namespace test_vector_math_part3 {
+    using namespace vector_math_part3;
+    using Catch::Approx;
+
+    TEST_CASE("Normalized vector returns pair of normal and magnitude. // part3", "[normalized]")
+    {
+        const auto expectedMagnitude = Approx { 5.F };
+        const auto expectedX = Approx { 3.F / 5.F };
+        const auto expectedY = Approx { -4.F / 5.F };
+
+        const auto float2 = Float2 { 3.F, -4.F };
+
+        const auto normalizedResult = Normalized(float2);
+
+        const auto normal = normalizedResult.normal;
+        const auto magnitude = normalizedResult.magnitude;
+
+        // ...
+
+        REQUIRE(magnitude == expectedMagnitude);
+        REQUIRE(normal.x == expectedX);
+        REQUIRE(normal.y == expectedY);
+    }
+
+    TEST_CASE("Normalized vector returns pair of normal and magnitude, extracted using structured bindings. // Part3", "[normalized]")
+    {
+        const auto expectedMagnitude = Approx { 5.F };
+        const auto expectedX = Approx { 3.F / 5.F };
+        const auto expectedY = Approx { -4.F / 5.F };
+
+        const auto float2 = Float2 { 3.F, -4.F };
+
+        const auto [normal, magnitude, sqrMagnitude] = Normalized(float2);
+
+        // ...
+
+        REQUIRE(magnitude == expectedMagnitude);
+        REQUIRE(normal.x == expectedX);
+        REQUIRE(normal.y == expectedY);
+    }
+}
+
 namespace test_loop_trough_map {
     using city_map_t = std::map<std::string, size_t>;
 
