@@ -31,4 +31,14 @@ TEST_CASE("Magnitude returns the magnitude of a Float2", "[magnitude]")
     REQUIRE(Magnitude(float2) == Catch::Approx(expectedMagnitude));
 }
 
+TEST_CASE("Calculating the magnitude of a vector of length 0", "[magnitude]")
+{
+    using namespace vector_math_part1;
+
+    const Float2 float2 { 0.F, 0.F };
+    const float expectedMagnitude = 0.F;
+
+    REQUIRE(Magnitude(float2) == Catch::Approx(expectedMagnitude));
+}
+
 }
