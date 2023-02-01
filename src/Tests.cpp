@@ -1,11 +1,11 @@
 #include "Float2.h"
 #include <catch_amalgamated.hpp>
+#include <strings.h>
 
 namespace test_structured_bindings {
-
 TEST_CASE("Structured binding on array", "[array]")
 {
-    std::array<int, 3> coordinates { 15, 17, -3 };
+    auto coordinates = std::array<int, 3> { 15, 17, -3 };
 
     const auto& [coordX, coordY, coordZ] = coordinates;
 
@@ -15,30 +15,138 @@ TEST_CASE("Structured binding on array", "[array]")
 
     REQUIRE(coordY == 60);
 }
-
 }
 
-namespace test_vector {
+namespace test_structured_bindings_basics {
+TEST_CASE("Binding pair using variable assignment.", "[pair]")
+{
+    const auto index = std::pair { 3, 5 };
+
+    const auto row { index.first };
+    const auto column { index.second };
+
+    // ...
+
+    // I know these unit tests are dumb, but they're here for the sake of completion.
+    REQUIRE(row == 3);
+    REQUIRE(column == 5);
+}
+
+TEST_CASE("Binding pair using structured bindings.", "[pair]")
+{
+    const auto index = std::pair { 3, 5 };
+
+    const auto& [row, column] { index };
+
+    // ...
+
+    REQUIRE(row == 3);
+    REQUIRE(column == 5);
+}
+}
+
+namespace test_vector_math_universal {
 using namespace vector;
+using namespace vector_math_universal;
+using Catch::Approx;
 
 TEST_CASE("Magnitude returns the magnitude of a Float2", "[magnitude]")
 {
-    using namespace vector_math_part1;
+    const auto float2 = Float2 { 3.F, -4.F };
+    const auto expectedMagnitude = Approx { 5.F };
 
-    const Float2 float2 { 3.F, -4.F };
-    const float expectedMagnitude = 5.F;
-
-    REQUIRE(Magnitude(float2) == Catch::Approx(expectedMagnitude));
+    REQUIRE(Magnitude(float2) == expectedMagnitude);
 }
 
 TEST_CASE("Calculating the magnitude of a vector of length 0", "[magnitude]")
 {
-    using namespace vector_math_part1;
+    const auto float2 = Float2 { 0.F, 0.F };
+    const auto expectedMagnitude = Approx { 0.F };
 
-    const Float2 float2 { 0.F, 0.F };
-    const float expectedMagnitude = 0.F;
-
-    REQUIRE(Magnitude(float2) == Catch::Approx(expectedMagnitude));
+    REQUIRE(Magnitude(float2) == expectedMagnitude);
 }
 
+namespace test_vector_math_part1 {
+    using namespace vector_math_part1;
+    using Catch::Approx;
+
+    TEST_CASE("Normalized vector returns pair of normal and magnitude. // Part1", "[normalized]")
+    {
+        const auto expectedMagnitude = Approx { 5.F };
+        const auto expectedX = Approx { 3.F / 5.F };
+        const auto expectedY = Approx { -4.F / 5.F };
+
+        const auto float2 = Float2 { 3.F, -4.F };
+
+        const auto normalizedResult { Normalized(float2) };
+
+        const auto normal = normalizedResult.first;
+        const auto magnitude = normalizedResult.second;
+
+        // ...
+
+        REQUIRE(magnitude == expectedMagnitude);
+        REQUIRE(normal.x == expectedX);
+        REQUIRE(normal.y == expectedY);
+    }
+
+    TEST_CASE("Normalized vector returns pair of normal and magnitude, extracted using structured bindings. // Part1", "[normalized]")
+    {
+        const auto expectedMagnitude = Approx { 5.F };
+        const auto expectedX = Approx { 3.F / 5.F };
+        const auto expectedY = Approx { -4.F / 5.F };
+
+        const auto float2 = Float2 { 3.F, -4.F };
+
+        const auto [normal, magnitude] { Normalized(float2) };
+
+        // ...
+
+        REQUIRE(magnitude == expectedMagnitude);
+        REQUIRE(normal.x == expectedX);
+        REQUIRE(normal.y == expectedY);
+    }
+}
+
+namespace test_vector_math_part2 {
+    using namespace vector_math_part2;
+    using Catch::Approx;
+
+    TEST_CASE("Normalized vector returns pair of normal and magnitude. // part2", "[normalized]")
+    {
+        const auto expectedMagnitude = Approx { 5.F };
+        const auto expectedX = Approx { 3.F / 5.F };
+        const auto expectedY = Approx { -4.F / 5.F };
+
+        const auto float2 = Float2 { 3.F, -4.F };
+
+        const auto normalizedResult { Normalized(float2) };
+
+        const auto normal = normalizedResult.normal;
+        const auto magnitude = normalizedResult.magnitude;
+
+        // ...
+
+        REQUIRE(magnitude == expectedMagnitude);
+        REQUIRE(normal.x == expectedX);
+        REQUIRE(normal.y == expectedY);
+    }
+
+    TEST_CASE("Normalized vector returns pair of normal and magnitude, extracted using structured bindings. // Part2", "[normalized]")
+    {
+        const auto expectedMagnitude = Approx { 5.F };
+        const auto expectedX = Approx { 3.F / 5.F };
+        const auto expectedY = Approx { -4.F / 5.F };
+
+        const auto float2 = Float2 { 3.F, -4.F };
+
+        const auto [normal, magnitude] { Normalized(float2) };
+
+        // ...
+
+        REQUIRE(magnitude == expectedMagnitude);
+        REQUIRE(normal.x == expectedX);
+        REQUIRE(normal.y == expectedY);
+    }
+}
 }
