@@ -36,7 +36,7 @@ TEST_CASE("Binding pair using structured bindings.", "[pair]")
 {
     const auto index = std::pair { 3, 5 };
 
-    const auto& [row, column] { index };
+    const auto& [row, column] = index;
 
     // ...
 
@@ -51,7 +51,7 @@ TEST_CASE("Binding pair using structured bindings in the wrong way", "[pair]")
 {
     const auto index = std::pair { 3, 5 };
 
-    const int& [row, column] { index };
+    const int & [ row, column ] = index;
 
     // ...
 
@@ -94,7 +94,7 @@ namespace test_vector_math_part1 {
 
         const auto float2 = Float2 { 3.F, -4.F };
 
-        const auto normalizedResult { Normalized(float2) };
+        const auto normalizedResult = Normalized(float2);
 
         const auto normal = normalizedResult.first;
         const auto magnitude = normalizedResult.second;
@@ -114,7 +114,7 @@ namespace test_vector_math_part1 {
 
         const auto float2 = Float2 { 3.F, -4.F };
 
-        const auto [normal, magnitude] { Normalized(float2) };
+        const auto [normal, magnitude] = Normalized(float2);
 
         // ...
 
@@ -136,7 +136,7 @@ namespace test_vector_math_part2 {
 
         const auto float2 = Float2 { 3.F, -4.F };
 
-        const auto normalizedResult { Normalized(float2) };
+        const auto normalizedResult = Normalized(float2);
 
         const auto normal = normalizedResult.normal;
         const auto magnitude = normalizedResult.magnitude;
@@ -156,7 +156,7 @@ namespace test_vector_math_part2 {
 
         const auto float2 = Float2 { 3.F, -4.F };
 
-        const auto [normal, magnitude] { Normalized(float2) };
+        const auto [normal, magnitude] = Normalized(float2);
 
         // ...
 
