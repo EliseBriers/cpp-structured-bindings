@@ -22,8 +22,8 @@ TEST_CASE("Binding pair using variable assignment.", "[pair]")
 {
     const auto index = std::pair { 3, 5 };
 
-    const auto row { index.first };
-    const auto column { index.second };
+    const auto row = index.first;
+    const auto column = index.second;
 
     // ...
 
@@ -43,6 +43,22 @@ TEST_CASE("Binding pair using structured bindings.", "[pair]")
     REQUIRE(row == 3);
     REQUIRE(column == 5);
 }
+
+// Uncomment the following line to enable the invalid test.
+// #define STRUCTURED_BINDINGS_ILLEGAL_EXAMPLE
+#ifdef STRUCTURED_BINDINGS_ILLEGAL_EXAMPLE
+TEST_CASE("Binding pair using structured bindings in the wrong way", "[pair]")
+{
+    const auto index = std::pair { 3, 5 };
+
+    const int& [row, column] { index };
+
+    // ...
+
+    REQUIRE(row == 3);
+    REQUIRE(column == 5);
+}
+#endif // STRUCTURED_BINDINGS_ILLEGAL_EXAMPLE
 }
 
 namespace test_vector_math_universal {
