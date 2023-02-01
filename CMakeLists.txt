@@ -11,7 +11,7 @@ cmake_minimum_required(VERSION 3.5)
 project(${root_folder})
 
 # Create a sources variable with a link to all cpp files to compile
-set(SOURCES src/Tests.cpp src/Float2.cpp)
+set(SOURCES src/Tests.cpp src/Float2.cpp src/User.cpp)
 
 # Add an executable
 add_executable(${PROJECT_NAME} ${SOURCES})
