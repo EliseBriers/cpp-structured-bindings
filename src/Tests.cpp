@@ -1,5 +1,6 @@
 #include "Float2.h"
 #include <catch_amalgamated.hpp>
+#include <map>
 #include <strings.h>
 
 namespace test_structured_bindings {
@@ -163,6 +164,41 @@ namespace test_vector_math_part2 {
         REQUIRE(magnitude == expectedMagnitude);
         REQUIRE(normal.x == expectedX);
         REQUIRE(normal.y == expectedY);
+    }
+}
+
+namespace test_loop_trough_map {
+    using city_map_t = std::map<std::string, size_t>;
+
+    TEST_CASE("Loop through map the normal way.", "[map]")
+    {
+        auto citiesAndInhabitants = city_map_t {};
+
+        citiesAndInhabitants["Tokyo"] = 37'468'000U;
+        citiesAndInhabitants["Beijing"] = 19'618'000U;
+        citiesAndInhabitants["New York"] = 18'819'000U;
+        citiesAndInhabitants["Los Angeles"] = 12'458'000U;
+
+        for (const auto& iter : citiesAndInhabitants) {
+            const auto name = iter.first;
+            const auto population = iter.second;
+
+            // Some code that uses name and population...
+        }
+    }
+
+    TEST_CASE("Loop through map using structured bindings.", "[map]")
+    {
+        auto citiesAndInhabitants = city_map_t {};
+
+        citiesAndInhabitants["Tokyo"] = 37'468'000U;
+        citiesAndInhabitants["Beijing"] = 19'618'000U;
+        citiesAndInhabitants["New York"] = 18'819'000U;
+        citiesAndInhabitants["Los Angeles"] = 12'458'000U;
+
+        for (const auto& [name, population] : citiesAndInhabitants) {
+            // Some code that uses name and population...
+        }
     }
 }
 }
