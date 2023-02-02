@@ -4,6 +4,32 @@
 #include <strings.h>
 
 namespace test_structured_bindings {
+TEST_CASE("Thumbnail.", "[pair]")
+{
+    const auto data = std::pair<int, int> { 5, 7 };
+
+    auto [structured, bindings] = // ...
+        data;
+
+    REQUIRE(structured == 5);
+    REQUIRE(bindings == 7);
+}
+
+TEST_CASE("C++20 struct bindings example.", "[FooBar]")
+{
+    struct FooBar {
+        int foo;
+        int bar;
+    };
+
+    auto fooBar = FooBar { 5, 7 };
+
+    auto [foo, bar] = fooBar;
+
+    REQUIRE(foo == 5);
+    REQUIRE(bar == 7);
+}
+
 TEST_CASE("Structured binding on array", "[array]")
 {
     auto coordinates = std::array<int, 3> { 15, 17, -3 };
