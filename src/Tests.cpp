@@ -198,8 +198,8 @@ namespace test_vector_math_part2 {
 
         const auto normalizedResult = Normalized(float2);
 
-        const auto normal = normalizedResult.normal;
-        const auto magnitude = normalizedResult.magnitude;
+        const auto& normal = normalizedResult.normal;
+        const auto& magnitude = normalizedResult.magnitude;
 
         // ...
 
@@ -240,8 +240,8 @@ namespace test_vector_math_part3 {
 
         const auto normalizedResult = Normalized(float2);
 
-        const auto normal = normalizedResult.normal;
-        const auto magnitude = normalizedResult.magnitude;
+        const auto& normal = normalizedResult.normal;
+        const auto& magnitude = normalizedResult.magnitude;
 
         // ...
 
@@ -281,8 +281,8 @@ namespace test_loop_trough_map {
         citiesAndInhabitants["Los Angeles"] = 12'458'000U;
 
         for (const auto& iter : citiesAndInhabitants) {
-            const auto name = iter.first;
-            const auto population = iter.second;
+            const auto& name = iter.first;
+            const auto& population = iter.second;
 
             // Some code that uses name and population...
         }
