@@ -4,27 +4,60 @@
 #include <strings.h>
 
 namespace test_structured_bindings {
+std::pair<int, int> SomeFunction()
+{
+    return { 5, 7 };
+}
+
+TEST_CASE("Multiple return values from function.", "[pair]")
+{
+    const auto [foo, bar] = SomeFunction();
+
+    REQUIRE(foo == 5);
+    REQUIRE(bar == 7);
+}
+
 TEST_CASE("Thumbnail.", "[pair]")
 {
     const auto data = std::pair<int, int> { 5, 7 };
 
-    auto [structured, bindings] = // ...
+    const auto [structured, bindings] = // ...
         data;
 
     REQUIRE(structured == 5);
     REQUIRE(bindings == 7);
 }
 
-TEST_CASE("C++20 struct bindings example.", "[FooBar]")
+TEST_CASE("FooBar Struct", "[FooBar]")
 {
     struct FooBar {
         int foo;
         int bar;
     };
 
-    auto fooBar = FooBar { 5, 7 };
+    const auto fooBar = FooBar { 5, 7 };
 
-    auto [foo, bar] = fooBar;
+    const auto [foo, bar] = fooBar;
+
+    REQUIRE(foo == 5);
+    REQUIRE(bar == 7);
+}
+
+TEST_CASE("FooBar Tuple", "[FooBar]")
+{
+    const auto fooBar = std::tuple<int, int> { 5, 7 };
+
+    const auto [foo, bar] = fooBar;
+
+    REQUIRE(foo == 5);
+    REQUIRE(bar == 7);
+}
+
+TEST_CASE("FooBar Array", "[FooBar]")
+{
+    const auto fooBar = std::array<int, 2> { 5, 7 };
+
+    const auto [foo, bar] = fooBar;
 
     REQUIRE(foo == 5);
     REQUIRE(bar == 7);
