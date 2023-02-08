@@ -2,7 +2,7 @@
   <a align="center" href="https://www.youtube.com/watch?v=FWizpd-n7W4">
     <img src="https://img.youtube.com/vi/FWizpd-n7W4/mqdefault.jpg" width=30%>
   </a>
-  <h1>STD Accumulate Examples</h1>
+  <h1>Structured bindings examples</h1>
   <p>
     Git repo for the video <a href="https://www.youtube.com/watch?v=FWizpd-n7W4">C++ Structured Bindings: How, Why, and Why not</a>.
     <br>
