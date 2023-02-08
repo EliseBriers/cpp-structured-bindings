@@ -1,10 +1,10 @@
 <div align="center">
-  <a align="center" href="https://www.youtube.com/watch?v=ID_GOES_HERE">
-    <img src="https://img.youtube.com/vi/ID_GOES_HERE/mqdefault.jpg" width=30%>
+  <a align="center" href="https://www.youtube.com/watch?v=FWizpd-n7W4">
+    <img src="https://img.youtube.com/vi/FWizpd-n7W4/mqdefault.jpg" width=30%>
   </a>
   <h1>STD Accumulate Examples</h1>
   <p>
-    Git repo for the video <a href="https://www.youtube.com/watch?v=ID_GOES_HERE">C++ Structured Bindings: How, Why, and Why not</a>.
+    Git repo for the video <a href="https://www.youtube.com/watch?v=FWizpd-n7W4">C++ Structured Bindings: How, Why, and Why not</a>.
     <br>
     <sub>By <a href="https://www.youtube.com/@ElisePlusPlus">Elise++</a></sub><br><br>
     <a href="/../../actions/workflows/cmake.yml">
@@ -19,7 +19,7 @@
 ***
 
 ## Introduction
-This repo contains all the code files shown in the video [C++ Structured Bindings: How, Why, and Why not](https://www.youtube.com/watch?v=ID_GOES_HERE). It shows how structured bindings can make code shorter and more readable. It also covers some common pitfalls and when you'd want to avoid using them.
+This repo contains all the code files shown in the video [C++ Structured Bindings: How, Why, and Why not](https://www.youtube.com/watch?v=FWizpd-n7W4). It shows how structured bindings can make code shorter and more readable. It also covers some common pitfalls and when you'd want to avoid using them.
 
 ## Building and testing
 ### Manually
